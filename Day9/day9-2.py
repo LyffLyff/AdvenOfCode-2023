@@ -47,13 +47,13 @@ for value_history in histories:
             difference_layers[-1]
             break
 
-    # extrapolate next value
+    # extrapolate prior value
     if difference_layers[-1] == []:
         # if the last difference layer is not all zeros but empty
         difference_layers.pop(-1)
-    extrapolated_value = difference_layers[-1][-1]
+    extrapolated_value = difference_layers[-1][0]
     for i in range(len(difference_layers) - 1, 0, -1):
-        extrapolated_value = difference_layers[i - 1][-1] + extrapolated_value
+        extrapolated_value = difference_layers[i - 1][0] - extrapolated_value
 
     print("EXTRAPOLATED VALUE", extrapolated_value)
     print("----------------------------------")
